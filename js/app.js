@@ -9,6 +9,12 @@ var RPN = window.RPN;
 var Stack = window.Stack;
 var Buffer = window.Buffer;
 
+// switch math.js to 'bignumber' mode
+math.config({
+    number: 'bignumber',
+    precision: 64
+});
+
 var buildKeyMatrix = function (div_id, width, height) {
     var div = document.getElementById(div_id);
     var table = document.createElement("table");
