@@ -137,7 +137,10 @@
             }
         },
         fmt: function (stack_id) {
-            return math.format(RPN.stack.get(stack_id), {precision: 14}).replace("e", "E");
+            var s = math.format(RPN.stack.get(stack_id));
+            s = s.replace(new RegExp("Infinity", "g"), "∞");
+            s = s.replace(new RegExp("e", "g"), "E");
+            return s;
         }
     };
 
