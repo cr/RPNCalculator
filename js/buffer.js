@@ -51,8 +51,7 @@
     };
 
     exports.Buffer.prototype.value = function () {
-        var parser = new math.parser();
-        return parser.eval(this.buffer); // Uh-oh!
+        return math.eval(this.buffer); // Uh-oh!
         // Then again: buffer *should* only ever contain
         // combinations of key label constants.
     };
