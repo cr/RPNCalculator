@@ -1,183 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
-
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1"/>
     <title>RPN Calculator</title>
-
-    <style>
-      html, body {
-        display: block;
-        margin: 0px;
-        padding: 0px;
-        border: 0px;
-        height: 100%;
-        width: 100%;
-        line-height: 100%;
-        overflow: hidden;
-        background: white;
-      }
-      #calculator {
-        display: block;
-        padding: 0px;
-        margin: 0px;
-        border: 0px;
-        width: 100%;
-        height: 100%;
-      }
-      #display {
-        padding: 0px;
-        margin: 0px;
-        border: 0px;
-        font-family: Monospace;
-        display: block;
-        width: 100%;
-        height: 20%;
-        color: white;
-        background: black;
-        overflow: scroll;
-      }
-      #display div {
-        display: block;
-        width: 100%;
-        margin: 0px;
-        border: 0px;
-        vertical-align: middle;
-        text-align: left;
-        word-break: break-all;
-      }
-      #display div::first-letter {
-        font-size: 60%;
-        font-weight: bold;
-        color: gray;
-        vertical-align: +0.1rem;
-      }
-      #key_block {
-        padding: 0px;
-        margin: 0px;
-        border: 0px;
-        background: black;
-        font-size: 0.8rem;
-        font-family: Sans;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-      #func_keys {
-        padding: 0px;
-        margin: 0px;
-        border: 0px;
-        background: black;
-      }
-      #num_keys {
-        padding: 0px;
-        margin: 0px;
-        border: 0px;
-        background: black;
-      }
-      table.keyboard {
-        border: 0px;
-        margin: 0px;
-        padding: 0px;
-        width: 100%;
-        table-layout: fixed;
-      }
-      table.keyboard td {
-        border: 2px solid #444444;
-        padding: 0px;
-        margin: 0px;
-        border-radius: 10px;
-        width: 100%;
-        color: white;
-        text-align: center;
-        font-weight: normal;
-        font-size: 1.5em;
-        vertical-align: middle;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        background: #111111;
-      }
-      table.keyboard td:active {
-        background: #666666;
-      }
-      @media screen and (orientation: portrait) {
-        #display {
-          display: block;
-          width: 100%;
-          height: 20%;
-        }
-        #display div {
-          font-size: 1.35rem;
-          height: calc(25%-0.6rem);
-          padding: 0px;
-          padding-top: 0.4rem;
-          padding-bottom: 0.2rem;
-        }
-        #key_block {
-          display: block;
-          width: 100%;
-          height: 100%;
-        }
-        #func_keys {
-          display: block;
-          width: 100%;
-          height: 40%;
-        }
-        #num_keys {
-          display: block;
-          width: 100%;
-          height: 40%;
-        }
-      }
-      @media screen and (orientation: landscape) {
-        #display {
-          display: block;
-          width: 100%;
-          height: 32%;
-          padding-top: 0.1rem;
-        }
-        #display div {
-          font-size: 1.4rem;
-          height: 25%;
-          padding: 0px;
-        }
-        #key_block {
-          display: block;
-          width: 100%;
-          height: 68%;
-        }
-        #func_keys {
-          display: inline;
-          float: left;
-          width: 50%;
-          height: 100%;
-        }
-        #num_keys {
-          display: inline;
-          float: right;
-          width: 50%;
-          height: 100%;
-        }        
-      }
-    </style>
-    
-    <script src="style/math.min.js" defer></script>
+    <link href="style/default.css" rel="stylesheet"/>
+    <script src="js/math.min.js" defer></script>
+    <script src="js/stack.js" defer></script>
+    <script src="js/buffer.js" defer></script>
+    <script src="js/rpn.js" defer></script>
     <script src="js/app.js" defer></script>
+</head>
 
-  </head>
-
-  <body>
-    <div id="calculator">
-      <div id="display"><div>0</div><div>0</div><div>0</div><div>0</div></div>
-      <div id="key_block">
-        <div id="func_keys">sin cos tan</div>
-        <div id="num_keys">0 1 2 3</div>
-      </div>
+<body>
+<div id="calculator">
+    <div id="display">
+        <div id="line_b">0</div>
+        <div id="line_a">0</div>
+        <div id="line_y">0</div>
+        <div id="line_x">0</div>
     </div>
-  </body>
+    <div id="key_panel">
+        <div id="function_panel">sin cos tan</div>
+        <div id="number_panel">0 1 2 3</div>
+    </div>
+</div>
+</body>
 
 </html>

@@ -1,0 +1,179 @@
+* {
+    /* all boxes shall include padding and border */
+    box-sizing: border-box;
+}
+
+html, body {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 100%;
+    width: 100%;
+    line-height: 100%;
+    overflow: hidden;
+    background: white;
+}
+
+#calculator {
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#display {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-family: Monospace;
+    display: block;
+    width: 100%;
+    height: 20%;
+    color: white;
+    background: black;
+    overflow: scroll;
+}
+
+#display div {
+    display: block;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    vertical-align: middle;
+    text-align: left;
+    word-break: break-all;
+}
+
+#display div::first-letter {
+    font-size: 60%;
+    font-weight: bold;
+    color: gray;
+    vertical-align: 0.1rem;
+}
+
+#key_panel {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: black;
+    font-size: 0.8rem;
+    font-family: sans-serif;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#function_panel {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: black;
+}
+
+#number_panel {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: black;
+}
+
+table.keyboard {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table.keyboard td {
+    border: 2px solid #444444;
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-weight: normal;
+    font-size: 1.5em;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    background: #111111;
+}
+
+table.keyboard td:active {
+    background: #666666;
+}
+
+@media screen and (orientation: portrait) {
+    #display {
+        display: block;
+        width: 100%;
+        height: 20%;
+    }
+
+    #display div {
+        font-size: 1.35rem;
+        height: 25%;
+        padding: 0.4rem 0 0.2rem 0;
+    }
+
+    #key_panel {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    #function_panel {
+        display: block;
+        width: 100%;
+        height: 40%;
+    }
+
+    #number_panel {
+        display: block;
+        width: 100%;
+        height: 40%;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    #display {
+        display: block;
+        width: 100%;
+        height: 32%;
+        padding-top: 0.1rem;
+    }
+
+    #display div {
+        font-size: 1.4rem;
+        height: 25%;
+        padding: 0;
+    }
+
+    #key_panel {
+        display: block;
+        width: 100%;
+        height: 68%;
+    }
+
+    #function_panel {
+        display: inline;
+        float: left;
+        width: 50%;
+        height: 100%;
+    }
+
+    #number_panel {
+        display: inline;
+        float: right;
+        width: 50%;
+        height: 100%;
+    }
+}
