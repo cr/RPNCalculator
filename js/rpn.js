@@ -6,8 +6,10 @@
     'use strict';
 
     exports.RPN = {
+
         stack: new Stack(),
         buffer: new Buffer(),
+        precision: 16,
 
         push: function (val) {
             this.stack.push(val);
@@ -137,9 +139,31 @@
             }
         },
         fmt: function (stack_id) {
-            var s = math.format(RPN.stack.get(stack_id));
+
+            // Work re and im separately to avoid
+            // lower combined display precision.
+            var val = RPN.stack.get(stack_id);
+            var re = math.re(val);
+            var im = math.im(val);
+
+            var opt = {
+                notation: "auto",
+                precision: this.precision,
+                exponential: {
+                    lower: 1e-6,
+                    upper: 1e10
+                }
+            };
+
+            var s = math.format(re, opt);
+            var s_im = math.format(im, opt);
+            if (s_im !== "0") {
+                if (s === "0") s = ""; // hide real 0 if purely imaginary
+                s += "i" + s_im;
+            }
             s = s.replace(new RegExp("Infinity", "g"), "∞");
             s = s.replace(new RegExp("e", "g"), "E");
+            s = s.replace(new RegExp("NaN", "g"), "[NaN]");
             return s;
         }
     };
