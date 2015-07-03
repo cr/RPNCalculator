@@ -24,6 +24,5 @@
   "developer": {
     "name": "Christiane Ruetten",
     "url": "https://github.com/cr/rpncalculator/"
-  },
-  "csp" : "default-src 'self'; script-src 'self'; object-src 'none'; style-src 'self'"
+  }
 }
