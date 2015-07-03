@@ -197,16 +197,22 @@ var pushButton = function (event) {
 var multitouchHandler = function (event) {
     //console.log(event);
     pushButton(event);
-}
+};
 
 var init = function () {
     console.log("READY.");
     Keypad.init();
     Keypad.loadKeymap("normal");
     updateDisplay();
-    document.addEventListener("touchstart", function (event) {
-        multitouchHandler(event)
-    });
+    if ('ontouchstart' in document.documentElement) {
+        document.addEventListener("touchstart", function (event) {
+            multitouchHandler(event)
+        });
+    } else {
+        document.addEventListener("click", function (event) {
+            multitouchHandler(event)
+        });
+    }
 };
 
 window.addEventListener('load', function load(event) {
