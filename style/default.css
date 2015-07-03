@@ -42,15 +42,15 @@ html, body {
 }
 
 #line_a {
-    background: #222222;
+    background: #111111;
 }
 
 #line_y {
-    background: #000000;
+    background: #222222;
 }
 
 #line_x {
-    background: #222222;
+    background: #333333;
 }
 
 #display div p {
