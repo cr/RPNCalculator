@@ -140,7 +140,7 @@ var Keypad = {
 //      {label: "DRP", pad: "function_panel", pos: [4, 0], call: RPN.drop, inv: true}, //TODO
 //      {label: "UNDO", pad: "function_panel", pos:[4,0], call:RPN.undo, inv: true}, //TODO
         {label: "×π", pad: "function_panel", pos: [3, 2], call: RPN.timespi, dump: true},
-        {label: "x↔︎y", pad: "function_panel", pos: [2, 0], call: RPN.swap, dump: true},
+        {label: "x⇄y", pad: "function_panel", pos: [2, 0], call: RPN.swap, dump: true},
         {label: "RAD", pad: "function_panel", pos: [4, 2], call: RPN.rad, dump: true},
         {label: "DEG", pad: "function_panel", pos: [4, 2], call: RPN.deg, dump: true, inv: true},
         {label: "INV", pad: "function_panel", pos: [0, 0], call: setinv}, // FIXME: call scoping issue
@@ -180,7 +180,7 @@ var updateDisplay = function () {
 };
 
 var pushButton = function (event) {
-    //console.log(e);
+    //console.log(event);
     if (event.target.className == "normkey" || event.target.className == "invkey") {
         var td = event.target;
         navigator.vibrate([35]);
