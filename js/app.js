@@ -15,16 +15,51 @@ math.config({
     precision: 64
 });
 
+// FIXME: following two functions should be Keypad methods, but
+// moved here because of scoping issues as keymap 'call' references
+var setinv = function () {
+    Keypad.inv = true;
+    Keypad.loadKeymap("inverse");
+};
+
+var setnorm = function () {
+    Keypad.inv = true;
+    Keypad.loadKeymap("normal");
+};
+
 var Keypad = {
+
+    inv: false,
 
     init: function () {
         this.buildMatrix("function_panel", 5, 4);
         this.buildMatrix("number_panel", 5, 4);
-        for (var i = 0; i < this.keymap.length; i++) {
-            var k = this.keymap[i];
-            if (!k.inv) {
-                Keypad.findParentTd(k.pad, k.pos[0], k.pos[1]).textContent = k.label;
-            }
+    },
+
+    loadKeymap: function (type) {
+        switch (type) {
+            case "inverse":
+                // FIXME: this hackish way of overwriting non-invs
+                for (var i = 0; i < this.keymap.length; i++) {
+                    var k = this.keymap[i];
+                    var td = this.findParentTd(k.pad, k.pos[0], k.pos[1]);
+                    td.textContent = k.label;
+                    if (k.inv) {
+                        td.className = "invkey";
+                    } else {
+                        td.className = "normkey";
+                    }
+                }
+                break;
+            default:
+                for (var j = 0; j < this.keymap.length; j++) {
+                    var kk = this.keymap[j];
+                    if (!kk.inv) {
+                        var tdd = this.findParentTd(kk.pad, kk.pos[0], kk.pos[1]);
+                        tdd.textContent = kk.label;
+                        tdd.className = "normkey";
+                    }
+                }
         }
     },
 
@@ -47,7 +82,7 @@ var Keypad = {
                 td.style.maxHeight = "calc(100% / " + height + ")";
                 //td.addEventListener("click", pushButton);
                 tr.appendChild(td);
-                if (x == 0 && y == 1 && div_id == "number_panel")
+                if (x == 0 && y == 1 && div_id == "number_panel") // FIXME: move logic to loadKeymap()
                     td.rowSpan = 3;
                 if (x == 0 && y == 2 && div_id == "number_panel")
                     td.style.display = "none";
@@ -61,12 +96,6 @@ var Keypad = {
             div.removeChild(div.firstChild);
         }
         div.appendChild(table);
-    },
-
-    setinv: function () {
-    },
-
-    setnorm: function () {
     },
 
     keymap: [
@@ -87,7 +116,7 @@ var Keypad = {
         {label: "E", pad: "number_panel", pos: [0, 0], call: RPN.append},
         {label: "±", pad: "number_panel", pos: [3, 3], call: RPN.append},
         {label: ".", pad: "number_panel", pos: [2, 3], call: RPN.append},
-        {label: "↵", pad: "number_panel", pos: [0, 1], call: RPN.enter, rowspan: 3}, // rowspan currently hardcoded
+        {label: "↵", pad: "number_panel", pos: [0, 1], call: RPN.enter, rowspan: 3}, // FIXME: rowspan currently hardcoded
         {label: "SIN", pad: "function_panel", pos: [0, 2], call: RPN.sin, dump: true},
         {label: "ASIN", pad: "function_panel", pos: [0, 2], call: RPN.asin, dump: true, inv: true},
         {label: "COS", pad: "function_panel", pos: [1, 2], call: RPN.cos, dump: true},
@@ -108,14 +137,14 @@ var Keypad = {
         {label: 'C', pad: "function_panel", pos: [3, 0], call: RPN.clr},
 //      {label: "CLx", pad: "function_panel", pos:[3,0], call:RPN.clx, inv: true}, //TODO
         {label: "⌫", pad: "function_panel", pos: [4, 0], call: RPN.del},
+//      {label: "DRP", pad: "function_panel", pos: [4, 0], call: RPN.drop, inv: true}, //TODO
 //      {label: "UNDO", pad: "function_panel", pos:[4,0], call:RPN.undo, inv: true}, //TODO
         {label: "×π", pad: "function_panel", pos: [3, 2], call: RPN.timespi, dump: true},
-//      {label: "e", pad: "function_panel", pos:[3,2], call:RPN.pi, dump:true, inv: true}, // TODO
         {label: "x↔︎y", pad: "function_panel", pos: [2, 0], call: RPN.swap, dump: true},
         {label: "RAD", pad: "function_panel", pos: [4, 2], call: RPN.rad, dump: true},
         {label: "DEG", pad: "function_panel", pos: [4, 2], call: RPN.deg, dump: true, inv: true},
-        {label: "INV", pad: "function_panel", pos: [0, 0], call: this.setinv},
-        {label: "INV", pad: "function_panel", pos: [0, 0], call: this.setnorm, inv: true}
+        {label: "INV", pad: "function_panel", pos: [0, 0], call: setinv}, // FIXME: call scoping issue
+        {label: "NRM", pad: "function_panel", pos: [0, 0], call: setnorm, inv: true} // FIXME: call scoping issue
     ],
 
     findParentTd: function (keypad, x, y) {
@@ -173,8 +202,11 @@ var multitouchHandler = function (event) {
 var init = function () {
     console.log("READY.");
     Keypad.init();
+    Keypad.loadKeymap("normal");
     updateDisplay();
-    document.addEventListener("touchstart", function (event) {multitouchHandler(event)});
+    document.addEventListener("touchstart", function (event) {
+        multitouchHandler(event)
+    });
 };
 
 window.addEventListener('load', function load(event) {

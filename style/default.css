@@ -38,7 +38,7 @@ html, body {
 }
 
 #line_b {
-    background: #333333;
+    background: #000000;
 }
 
 #line_a {
@@ -46,18 +46,11 @@ html, body {
 }
 
 #line_y {
-    background: #111111;
-}
-
-#line_x {
     background: #000000;
 }
 
-#display div span::first-letter {
-    font-size: 60%;
-    font-weight: bold;
-    color: gray;
-    vertical-align: 0.1rem;
+#line_x {
+    background: #222222;
 }
 
 #display div p {
