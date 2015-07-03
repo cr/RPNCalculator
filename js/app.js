@@ -132,7 +132,8 @@ var Keypad = {
 
 var updateDisplay = function () {
     var display = document.getElementById("display");
-    var lines = display.children;
+    var lines = [].slice.call(display.children); // turns HTMLCollection into Array
+    lines = lines.map(function(e){return e.firstChild}); // fall through to inner span
     if (RPN.isBufferEmpty()) {
         lines[0].textContent = "B " + RPN.fmt(3);
         lines[1].textContent = "A " + RPN.fmt(2);
