@@ -20,6 +20,12 @@
         swap: function () {
             this.stack.swap();
         },
+        rotdn: function () {
+            this.stack.rotdn();
+        },
+        rotup: function () {
+            this.stack.rotup();
+        },
         add: function () {
             this.push(math.add(this.pop(), this.pop()));
         },
