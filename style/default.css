@@ -121,13 +121,13 @@ table.keyboard td {
     #function_panel {
         display: block;
         width: 100%;
-        height: 50%;
+        height: 42%;
     }
 
     #number_panel {
         display: block;
         width: 100%;
-        height: 50%;
+        height: 58%;
     }
 }
 

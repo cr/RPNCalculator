@@ -34,6 +34,10 @@ var Keypad = {
     init: function () {
         this.buildMatrix("function_panel", 5, 4);
         this.buildMatrix("number_panel", 5, 4);
+
+        /* TODO: Hide the unused second line, will be populated soon */
+        document.getElementById("function_panel")
+            .firstChild.firstChild.children[1].style.display = "none";
     },
 
     loadKeymap: function (type) {
