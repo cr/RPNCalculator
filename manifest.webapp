@@ -1,6 +1,17 @@
 {
   "name": "RPN Calculator",
-  "description": "A simple scientific calculator with reverse polish notation",
+  "version": "1.0",
+  "locales": {
+    "en": {
+      "name": "RPN Calculator",
+      "description": "A simple scientific calculator with reverse polish notation"
+    },
+    "de": {
+      "name": "RPN-Rechner",
+      "description": "Einfacher wissenschaftlicher Taschenrechner mit Reverse Polish Notation"
+    }
+  },
+  "default_locale": "en",
   "launch_path": "/index.html",
   "icons": {
     "16": "/icons/icon_16.png",
@@ -12,6 +23,7 @@
   },
   "developer": {
     "name": "Christiane Ruetten",
-    "url": "https://github.com/cr/"
-  }
+    "url": "https://github.com/cr/rpncalculator/"
+  },
+  "csp" : "default-src 'self'; script-src 'self'; object-src 'none'; style-src 'self'"
 }
