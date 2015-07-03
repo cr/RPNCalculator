@@ -181,9 +181,9 @@ var updateDisplay = function () {
 
 var pushButton = function (event) {
     //console.log(e);
-    var td = event.target.closest('table.keyboard td');
-    if (td) {
-        navigator.vibrate([30]);
+    if (event.target.className == "normkey" || event.target.className == "invkey") {
+        var td = event.target;
+        navigator.vibrate([35]);
         //console.log(td);
         var key = Keypad.findKey(td.textContent);
         console.log("calling", key.call, "with arg", key.label);
