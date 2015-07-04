@@ -1,6 +1,6 @@
 # RPN Calculator
 
-A minimalistic scientific calculator with reverse polish notation for Firefox OS and Firefox Mobile
+A minimalistic *scientific calculator* with *reverse polish notation* for *Firefox OS* and *Firefox Mobile* on *Android*.
 
 It is available on [Firefox Marketplace](https://marketplace.firefox.com/app/rpn-calculator/) (once it passes the review process).
 
@@ -22,6 +22,7 @@ If you're familiar with the likes of *HP 35s*, *HP 15C*, or the *HP 49* model fa
 * Display precision of 16 significant digits (*a lot* more internally)
 * Standard trigonometric and arithmetic functions
 * Rudimentary support for complex numbers (result only, no input)
+* Portrait and landscape mode
 
 ## Quick introduction
 
@@ -29,11 +30,11 @@ On an RPN calculator, you must first push values onto the stack using the *ENTER
 
 To calculate **(7+6)/(2-5)**, for example, enter the following sequence:
 
-* **7↵ 6↵ + 2↵ 5↵ - ±**
+* **7↵ 6↵ + 2↵ 5↵ - ÷**
 
 Note that *RPN Calculator* lets you skip ↵ when followed immediately by an operator, so the following shorter sequence yields the same result:
 
-* **7↵ 6+ 2↵ 5- ±**
+* **7↵ 6+ 2↵ 5- ÷**
 
 Use x⇄y and R↓ to move values around on the stack and *INV* to access the layer with inverse or related functionality.
 
@@ -49,6 +50,6 @@ This version is intended for public beta testing, so please expect not only obvi
 * Fractional remainders below display precision result will be omitted on display, but not in calculation. Eg., the result of *1 + 1E-20* is shown as *1*, but subtract *1* from the result to get *1E-20* again.
 * Firefox Mobile on Android shows a white box on the *DEL* key, because the default font lacks the ⌫ symbol.
 
-Please provide feedback on github's ticket system. It will let me know about bugs, and about the features you miss the most.
+Please provide feedback through github's ticket system. It will let me know about bugs, and also about the features you miss the most.
 
 I hope you enjoy this app.
