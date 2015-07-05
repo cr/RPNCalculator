@@ -26,7 +26,7 @@ If you're familiar with the likes of *HP 35s*, *HP 15C*, or the *HP 49* model fa
 
 ## Quick introduction
 
-On an RPN calculator you must first push values onto the stack using the *ENTER* key (↵), and then use the desired operator key to calculate the result which will end up on top the stack – often referenced by its variable name *x* –, consuming the operands that went into the calculation.
+On an RPN calculator you must first push values onto the stack using the *ENTER* key (↵), and then use the desired operator key to calculate the result which will end up on top the stack – often referenced by its variable name *x* –, consuming the operands that went into the calculation. Writing the *sum of 1 and 2* as *1 2 +* is referred to as [postfix notation](https://en.wikipedia.org/wiki/Postfix_notation), as opposed to the traditional [infix notation](https://en.wikipedia.org/wiki/Infix_notation) of *1 + 2*. 
 
 To calculate **(7+6)/(2-5)**, for example, enter the following sequence:
 
@@ -35,14 +35,14 @@ To calculate **(7+6)/(2-5)**, for example, enter the following sequence:
 This is what happens on the stack:
 
 | Input | Stack  |
-| ----- | ------ |
+|:-----:| ------ |
 | 7↵    | 7      |
-| 6↵    | 6,7    |
+| 6↵    | 7 6    |
 | +     | 13     |
-| 2↵    | 2,13   |
-| 5↵    | 5,2,13 |
-| -     | -3,13  |
-| ÷     | -4.333 |
+| 2↵    | 13 2   |
+| 5↵    | 13 2 5 |
+| -     | 13 -3  |
+| ÷     | -4.3333… |
 
 To make input more efficient, *RPN Calculator* lets you skip ↵ when followed immediately by an operator, so the following shorter sequence yields the same result:
 
