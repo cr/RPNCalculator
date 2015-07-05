@@ -12,7 +12,7 @@ It is available on [Firefox Marketplace](https://marketplace.firefox.com/app/rpn
 
 *RPN Calculator* provides a minimalistic, yet powerful and efficient interface to the world of reverse polish notation. It boils down the gist of Hewlett Packard's RPN calculators into one consistent, modern user interface, while focusing on the most important functionality and workflows.
 
-If you're familiar with the likes of *HP 35s*, *HP 15C*, or the *HP 49* model family, you will feel right at home when it comes to everyday number crunching.
+If you're familiar with the likes of *HP 35s*, *HP 15C*, or the *HP 49* model family, you will feel right at home when it comes to everyday number crunching. If RPN isn't familiar to you, *RPN Calculator*'s simplicity won't confuse you with all the functionality that crowds the keypad a full-featured, programmable scientific calculator.
 
 ## Notable features
 
@@ -26,13 +26,25 @@ If you're familiar with the likes of *HP 35s*, *HP 15C*, or the *HP 49* model fa
 
 ## Quick introduction
 
-On an RPN calculator, you must first push values onto the stack using the *ENTER* key (↵), and then use the desired operator key to calculate the result which will end up on top the stack, often referenced by its variable name *x*.
+On an RPN calculator you must first push values onto the stack using the *ENTER* key (↵), and then use the desired operator key to calculate the result which will end up on top the stack – often referenced by its variable name *x* –, consuming the operands that went into the calculation.
 
 To calculate **(7+6)/(2-5)**, for example, enter the following sequence:
 
-* **7↵ 6↵ + 2↵ 5↵ - ÷**
+* **7↵ 6↵ + 2↵ 5↵ - ÷** 
 
-Note that *RPN Calculator* lets you skip ↵ when followed immediately by an operator, so the following shorter sequence yields the same result:
+This is what happens on the stack:
+
+| Input | Stack  |
+| ----- | ------ |
+| 7↵    | 7      |
+| 6↵    | 6,7    |
+| +     | 13     |
+| 2↵    | 2,13   |
+| 5↵    | 5,2,13 |
+| -     | -3,13  |
+| ÷     | -4.333 |
+
+To make input more efficient, *RPN Calculator* lets you skip ↵ when followed immediately by an operator, so the following shorter sequence yields the same result:
 
 * **7↵ 6+ 2↵ 5- ÷**
 
